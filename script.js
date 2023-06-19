@@ -9,6 +9,7 @@ const getWeatherForecast = async (cityName) => {
         });
         const data = await response.json();
         console.log(data);
+        showForeCast(data)
         return data;
     } catch (error) {
         console.log(error);
@@ -26,10 +27,23 @@ getWeather.addEventListener("click",()=>{
 async function showForeCast(data){
     let days = data.forecast.forecastday
     for(i=0;i<days.length;i++){
-        let 
+        let day = days[i].date
+        let weather = days[i].day.condition.text
+        let icon = days[i].day.condition.icon
+        let temp = days[i].day.avgtemp_c
+        let tempMax = days[i].day.maxtemp_c
+        let tempMin = days[i].day.mintemp_c
+        let humidity = days[i].day.avghumidity
+
+
     }
 }
 
 async function showCurrentWethear(data){
+    let weather = data.condition.text
+    let icon = data.condition.icon
+    let temp = data.temp_c
+    let humidity = data.humidity
+    let lastUpdate = data.last_update
 
 }
