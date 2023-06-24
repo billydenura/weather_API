@@ -9,7 +9,7 @@ const getWeatherForecast = async (cityName) => {
         });
         const data = await response.json();
         let cityDescription = document.getElementById("city-description")
-        console.log(data);
+        // console.log(data);
         cityDescription.innerHTML = `Showing the weather of ${data.location.name}, ${data.location.region}, ${data.location.country}`
         showCurrentWethear(data)
         showForeCast(data)
@@ -25,6 +25,7 @@ const getWeatherForecast = async (cityName) => {
 let getWeather = document.getElementsByTagName("button")[0]
 getWeather.addEventListener("click",()=>{
     let city = document.getElementById("city-name").value
+    clear()
     getWeatherForecast(city)
 
 })
@@ -91,4 +92,20 @@ async function showCurrentWethear(data){
     forecast.append(humidity)
     forecast.append(lastUpdate)
 
+}
+
+function clear(){
+    let weather = document.getElementById("weather-forecast")
+    let weatherForecast = document.getElementById("current-weather")
+    
+    if (weather.innerHTML!=""){
+        let weatherContainer = document.getElementsByClassName("weather-container")
+        for(i=0;i<4;i++){
+            // console.log(weatherContainer[i])
+            weatherContainer[0].remove()
+
+        }
+        // console.log(weatherContainer)
+
+    }
 }
